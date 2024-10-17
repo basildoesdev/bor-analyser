@@ -1,11 +1,11 @@
 # BoR Team Analyzer 
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/059c03a9-add5-41e9-9c40-9aec21ffc412/deploy-status)](https://app.netlify.com/sites/boranalyzer/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/65efd625-64c1-425a-b732-39f398915fa4/deploy-status)](https://app.netlify.com/sites/boranalyser/deploys)
 
 ## v2.0.0
 Latest version [here](https://boranalyser.netlify.app/).
 
-| ![My Image](https://boranalyser.netlify.app/assets/images/club-page-thumb.png) |
+| ![My Image](https://boranalyser.netlify.app/dist/assets/images/club-page-thumb.png) |
 |:--:|
 
 ## Features
