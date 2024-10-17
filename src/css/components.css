@@ -85,7 +85,16 @@ button:hover {
     border: 1px solid white;
 }
 
-input[type="text"] {
+
+body input[type="text"],
+input[type="text"]:-webkit-autofill {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+}
+
+#access-key{
     font-size: 1rem;
     color: rgb(1, 122, 17);
     border: 1px solid #ccc;

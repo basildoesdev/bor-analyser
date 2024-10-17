@@ -15,12 +15,12 @@
     <link rel="canonical" href="https://boranalyser.netlify.app/">
 
     <!-- Favicon for branding -->
-    <link rel="icon" href="../src/assets/icons/leaf.png" type="image/x-icon">
+    <!-- <link rel="icon" href="/assets/icons/leaf.png" type="image/x-icon"> -->
 
     <!-- Open Graph meta tags for social media optimization -->
     <meta property="og:title" content="Basil Dev Studios | Blackout Rugby Team Analyzer Tool">
     <meta property="og:description" content="Analyze your Blackout Rugby team with our tool for better lineup choices.">
-    <meta property="og:image" content="https://boranalyser.netlify.app/../src/assets/images/team-analyzer-preview.png">
+    <!-- <meta property="og:image" content="https://boranalyser.netlify.app/assets/images/team-analyzer-preview.png"> -->
     <meta property="og:url" content="https://boranalyser.netlify.app/">
     <meta property="og:type" content="website">
 
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Basil Dev Studios | Blackout Rugby Team Analyzer">
     <meta name="twitter:description" content="Analyze your Blackout Rugby team with our tool for better lineup choices.">
-    <meta name="twitter:image" content="https://boranalyser.netlify.app/assets/images/team-analyzer-preview.png">
+    <!-- <meta name="twitter:image" content="https://boranalyser.netlify.app/assets/images/team-analyzer-preview.png"> -->
 
     <!-- Stylesheets -->
     <!-- <link rel="stylesheet" href="../src/css/base.css">
@@ -137,5 +137,29 @@
 
     <!-- Scripts -->
     <script type="module" src="bundle.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.querySelector('.dropdown');
+    const button = document.querySelector('.dropdown-btn');
+    const clearStorageBtn = document.getElementById('clear-storage');
+
+    button.addEventListener('click', () => {
+      dropdown.classList.toggle('active');
+    });
+
+    
+    document.addEventListener('click', (event) => {
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
+
+    
+    clearStorageBtn.addEventListener('click', (event) => {
+      event.preventDefault(); 
+      localStorage.clear();
+      location.reload();
+    });
+  });</script>
 </body>
 </html>

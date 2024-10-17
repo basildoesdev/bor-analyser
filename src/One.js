@@ -2644,26 +2644,3 @@ function getSliderDOM(position, globals, weights) {
 
 //#endregion
 
-document.addEventListener('DOMContentLoaded', () => {
-    const dropdown = document.querySelector('.dropdown');
-    const button = document.querySelector('.dropdown-btn');
-    const clearStorageBtn = document.getElementById('clear-storage');
-
-    button.addEventListener('click', () => {
-      dropdown.classList.toggle('active');
-    });
-
-    
-    document.addEventListener('click', (event) => {
-      if (!dropdown.contains(event.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
-
-    
-    clearStorageBtn.addEventListener('click', (event) => {
-      event.preventDefault(); 
-      localStorage.clear();
-      location.reload();
-    });
-  });
