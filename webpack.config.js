@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack'); // Import dotenv-webpack
+const Dotenv = require('dotenv-webpack'); 
 
 module.exports = {
     entry: './src/One.js',
@@ -21,16 +21,15 @@ module.exports = {
                 },
             },
             {
-                test: /\.css$/, 
-                use: [
-                    'style-loader', 
-                    'css-loader',   
-                ],
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
             },
         ],
     },
     plugins: [
-        new Dotenv(), // Add this line
+        new Dotenv({
+            systemvars: true, 
+        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
