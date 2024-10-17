@@ -1,0 +1,203 @@
+.transfer-market-card {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.input-pair {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-pair label {
+  margin-bottom: 3px;
+  font-size: 12px;
+}
+
+.input-pair input {
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 6px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;  
+}
+
+.input-pair input:focus{
+  border: 1px solid #007bff;
+}
+
+.tm-button {
+  width: 100%;
+  padding: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tm-button:hover {
+  background-color: #0056b3;
+}
+
+.auction-card {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.auction-stats, .auction-info {
+    width: 48%;
+}
+
+.auction-stats p, .auction-info p {
+    margin: 5px 0;
+}
+
+.auction-info {
+    text-align: right;
+}
+
+.nat-img {
+    width: 24px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.title-sort{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.title-section{
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.bid-container {
+  background-color: #4d4c4c39; 
+  border: 1px solid #e0e0e0; 
+  border-radius: 8px; 
+  padding: 15px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  flex-direction: column; 
+}
+
+.blue {
+  color: #007bff; 
+  font-weight: bold; 
+  justify-content: space-between; 
+}
+
+.bid-text {
+  margin: 0; 
+  font-size: 16px; 
+  font-weight: bold; 
+}
+
+.bid-input {
+  color: #373636;
+  width: 120px; 
+  padding: 8px; 
+  font-size: 14px; 
+  border: 1px solid #007bff; 
+  border-radius: 4px; 
+  transition: border-color 0.3s; 
+}
+
+.bid-input:focus {
+  border-color: #0056b3; 
+  outline: none; 
+}
+
+.tm-bid-button {
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  padding: 8px; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+.tm-bid-button:hover {
+  background-color: #0056b3; 
+}
+
+.disabled {
+  background-color: #373636;
+}
+
+.disabled:hover{
+  background-color: #373636;
+  border:2px solid var(--accent-color);
+}
+
+.warn{
+  margin-top: 3px;
+}
+
+/* Transfer Market responsiveness */
+@media (max-width: 500px) {
+    .auction-card {
+        flex-direction: column;
+    }
+    .auction-stats, .auction-info {
+        width: 100%;
+        text-align: left;
+    }
+    .auction-info {
+        text-align: left;
+    }
+    .row {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px;
+    }
+  
+    .input-pair input {
+      padding: 5px;
+      font-size: 12px;
+    }
+  
+    .tm-button {
+      font-size: 13px;
+      padding: 7px;
+    }
+}
+
+@media (max-width: 768px) {
+  .row {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 5px;
+  }
+
+  .input-pair input {
+    padding: 4px;
+    font-size: 11px;
+  }
+
+  .tm-button {
+    font-size: 12px;
+    padding: 6px;
+  }
+}

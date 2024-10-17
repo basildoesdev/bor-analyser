@@ -1,0 +1,365 @@
+#team-analyzer-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top:20%;
+    background-color: rgb(41, 40, 40);
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(2, 1, 1, 0.3) 1px, transparent 1px);
+    background-size: 3px 3px; 
+    border: 1px solid #0c0a0a;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.712);
+    transition: all 0.3s ease-in-out;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-analyszer-form-links {
+    color: var(--accent-color);
+}
+
+#version {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: -10px;
+    left: -10px;
+}
+#refresh{
+    z-index: 1;
+}
+
+#refresh:hover {
+    color: #0747d3;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: #0747d3;
+}
+
+a:hover {
+    color: #0134a1;
+}
+
+a.premium {
+    color: rgb(104, 99, 99);
+}
+
+a.premium:hover {
+    color: #d3b404;
+}
+
+.input-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.key-info {
+    color: #a39999;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+
+button:hover {
+    background-color: #0747d3;
+    border: 1px solid white;
+}
+
+input[type="text"] {
+    font-size: 1rem;
+    color: rgb(1, 122, 17);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+}
+
+#averages {
+    margin-bottom: 5px;
+}
+
+.card {
+    background-color: rgb(41, 40, 40);
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(2, 1, 1, 0.3) 1px, transparent 1px);
+    background-size: 3px 3px; 
+    border: 1px solid #0c0a0a;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.712);
+    transition: all 0.3s ease-in-out;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.statistics {
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    width: 30px;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"><path d="M12 5.5L8 9.5 4 5.5"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: center 12px center;
+    background-size: 30px;
+    transition: transform 0.5s ease; 
+    transform-style: preserve-3d;
+}
+
+.statistics:hover{
+    cursor: pointer;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="yellowgreen"><path d="M12 5.5L8 9.5 4 5.5"></path></svg>');
+    
+}
+
+.statistics.rotate {
+    transform: rotateX(180deg);
+}
+
+.align-right{
+    text-align: right;
+}
+
+.csr {
+    color: sandybrown;
+}
+
+.physicals {
+    color: rgb(104, 99, 99);
+    width:100%;
+}
+
+.skills{
+    color: rgb(128, 123, 123);;
+}
+
+.form {
+    color: rgb(2, 163, 2);
+}
+
+.energy {
+    color: yellow;
+}
+
+.performance {
+    color: orange;
+}
+
+.position {
+    color: #a39999;
+}
+
+.age {
+    color: #64befa;
+}
+
+.blue{
+    color:#0d54ee;
+    margin-bottom: 10px;
+}
+
+.red {
+    color: var(--accent-color);
+}
+
+.injury{
+    margin-bottom: 10px;
+}
+
+.green {
+    color: yellowgreen;
+}
+
+.trained{
+    color: yellowgreen;
+}
+
+.individual{
+    color: rgb(2, 148, 173);
+}
+
+.injured{
+    border: 3px solid var(--accent-color);
+    box-shadow: inset 0 0 10px 0px var(--accent-color);
+}
+
+.news{
+    color:#252525;
+    background-color: rgba(245, 245, 245, 0.486);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.news-hover:hover{
+    cursor: pointer;
+}
+
+.sell{
+    border:3px solid #0d23ee;
+    box-shadow: inset 0 0 10px 0px #0d23ee;
+}
+
+.sell-and-injured{
+    border-top:3px solid var(--accent-color);
+    border-right: 3px solid var(--accent-color);
+    border-left: 3px solid #0d23ee;
+    border-bottom: 3px solid #0d23ee;
+    box-shadow: 
+    inset 10px 0px 10px #0d23ee,   
+    inset -10px 0 10px var(--accent-color),  
+    inset 0 10px 10px var(--accent-color),   
+    inset 0 -10px 10px #0d23ee;
+
+}
+
+.hidden-stats {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: none; 
+    transition: all 0.3s ease; 
+}
+
+.show {
+    display: block; 
+    opacity: 1;
+    animation: fadeIn 0.3s; 
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.nat-img-squad {
+    margin-left: 4px;
+}
+
+.nat-img {
+    margin-left: 4px;
+    margin-bottom: 5px;
+
+}
+
+.container {
+    display: flex;
+    min-width: 90%;
+    max-width: 90%;
+    margin-top: 50px;
+    border-radius: 8px;
+    flex-direction: column;
+}
+
+.club-name-title{
+    text-align: center;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.team-avg-title-text{
+    margin-bottom: 3px;
+}
+
+.name{
+    font-size: large;
+}
+
+.hide-show-button{
+    color:#0d54ee;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.slider-container{
+    display: none;
+}
+
+.default-weights:hover, .hide-show-button:hover{
+    color:#0747d3;
+    cursor: pointer;
+}
+
+.cabinet{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-end;
+    border: 2px solid #c9c5c5;
+    background-image:linear-gradient(73deg, #535252 5%, rgba(66, 64, 64, 0.021));
+}
+
+.trophy-count-text{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#trophy-all, #trophy-cup, #trophy-league, #trophy-friendly{
+    color: #a39999;
+}
+
+#trophy-all:hover, #trophy-cup:hover, #trophy-league:hover, #trophy-friendly:hover{
+    color: #0435be;
+    cursor: pointer;
+}
+
+.trophy{
+    display: flex;
+    align-items: center;
+    /* padding: 5px; */
+    /* margin: 3px; */
+    flex-direction: column;
+    border-radius: 3px;
+    color: #d8d5d5;
+}
+
+.trophy a{
+    color:#0d54ee;
+}
+
+.trophy a:hover{
+    color:#0d23ee;
+}
+
+.trophy img{
+    left: 50%;
+    padding:5px;
+    margin: 7x;
+}
+
+.trophy img:hover{
+    background-color: #81818346;
+    box-shadow: 0 0 5px rgb(19, 18, 1);
+    border-radius: 3px;
+}
+
+/* .trophy:hover{
+    background-image:linear-gradient(73deg, #535252 5%, rgba(66, 64, 64, 0.021));
+} */

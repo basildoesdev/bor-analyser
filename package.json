@@ -1,0 +1,24 @@
+{
+  "name": "bor-analyser",
+  "version": "2.0.0",
+  "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/059c03a9-add5-41e9-9c40-9aec21ffc412/deploy-status)](https://app.netlify.com/sites/boranalyzer/deploys)",
+  "main": "src/One.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "babel-loader": "^9.2.1",
+    "css-loader": "^7.1.2",
+    "dotenv-webpack": "^8.1.0",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

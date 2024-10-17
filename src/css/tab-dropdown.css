@@ -1,0 +1,124 @@
+.tab-nav {
+    display: flex;
+    margin-bottom:  0.5rem;;
+    width: 100%;
+    align-content: center;
+    max-width: 92%;
+    flex-direction: row;
+    align-self: center;
+}
+
+.tab-btn {
+    flex:1;
+    padding: 5px;
+    color: var(--main-text-color);
+    font-size: 0.9rem;
+    border-bottom: 2px solid var(--accent-color);
+    cursor: pointer;
+    transition: background-color 1s ease;
+    text-align: center;
+    border-radius: 3px;
+    background: linear-gradient(360deg, rgba(255, 0, 0, 0.075) 0%, rgba(255, 0, 0, 0) 100%);  
+}
+
+.tab-btn:hover {
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 1, 1, 0.3) 1px, transparent 1px);
+    background-size: 3px 3px; 
+    font-size: medium;
+    border-left: 2px solid var(--accent-color);
+    border-right: 2px solid var(--accent-color);
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.flex-align {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+.flex-align span {
+    flex: 1; 
+    margin-right: 1rem; 
+}
+
+.flex-align span:last-child {
+    margin-right: 0; 
+}
+
+.tab-nav .tab-btn.active {
+    background-color: #1b1b1b;
+    color: #fff;
+    border-right: 2px solid var(--accent-color);
+    border-left: 2px solid var(--accent-color);
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(2, 1, 1, 0.3) 1px, transparent 1px);
+    background-size: 3px 3px;  
+}
+
+.tab-dropdown {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    appearance: none;  
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"><path d="M12 5.5L8 9.5 4 5.5"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+}
+
+.sort-tab-dropdown {
+    margin-bottom: 5px;
+    width: 100%;
+    display: inline-block;
+    padding: 12px 15px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    appearance: none;  
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"><path d="M12 5.5L8 9.5 4 5.5"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+}
+
+#sort-list-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.tab-dropdown option, .sort-tab-dropdown option {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.tab-dropdown option:hover, .sort-tab-dropdown option:hover {
+    background-color: #555;
+}
+
+.tab-dropdown {
+    display: none; 
+}
+
+
