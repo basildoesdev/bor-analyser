@@ -5,7 +5,7 @@
 ## v2.0.0
 Latest version [here](https://boranalyser.netlify.app/).
 
-| ![My Image](https://boranalyser.netlify.app/dist/assets/images/club-page-thumb.png) |
+| ![My Image](https://boranalyser.netlify.app/assets/images/club-page-thumb.png) |
 |:--:|
 
 ## Features
