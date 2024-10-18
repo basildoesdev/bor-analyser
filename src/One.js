@@ -1,4 +1,4 @@
-const version = '2.0.0';
+const version = '2.0.3';
 
 //#region Globals.js // 
 
@@ -12,6 +12,7 @@ import './css/tab-dropdown.css';
 import './css/tm.css';
 import './css/top-button.css';
 import './css/dropdown.css';
+import './css/mail.css';
 import './css/responsive.css';
 
 // Element references
@@ -57,6 +58,10 @@ const Elements = {
     INDIVIDUAL_DATA: [],
     TRAINING_REPORT_DATA: [],
     REPORT_HEADERS: [],
+    MAIL_INBOX: [],
+    MAIL_SAVED: [],
+    MAIL_DELETED: [],
+    MAIL_SENT: [],
     _mainKey: 0,
     _memberid: 0,
     _teamid: 0,
@@ -149,6 +154,8 @@ document.addEventListener("DOMContentLoaded", function() {
         'Number8': { minHeight: 185, minWeight: 105 },
         'Center': { minWeight: 90 },
     };
+
+
 
     // Log after assignment
     // console.log(heightWeightRanges);
@@ -360,29 +367,37 @@ const _devKey = process.env.DEVKEY
         // Fetch all necessary data with caching
         const expiryTime = globals.expiryTime; 
 
+        // Fetch Member Data
         let memberData = await fetchAndCacheData('memberData', 'm', { memberid: globals._memberid }, expiryTime);
         globals.MEMBER_DATA = Object.values(memberData.members);
         globals._teamid = globals.MEMBER_DATA[0].teamid;
         globals._globals = memberData.gameDate;
         globals.isPremium = globals.MEMBER_DATA[0].premium === '1';
 
+        // Fetch Club Data
         let clubData = await fetchAndCacheData('clubData', 't', { teamid: globals._teamid }, expiryTime);
         globals.CLUB_DATA = Object.values(clubData.teams);
         // console.log(globals.CLUB_DATA)
+
+        // Fetch Trophy Data
         let clubTrophyData = await fetchAndCacheData('clubTrophyData', 'trph', { teamid: globals._teamid }, expiryTime);
         globals.CLUB_DATA[0].trophies = clubTrophyData ? Object.values(clubTrophyData.trophies) : [];
         globals.trophies = !!clubTrophyData;
-
+        globals.CLUB_DATA[0].trophies.sort((a, b) => Number(b.id) - Number(a.id));
+        
+        // Fetch Player Data
         let playerData = await fetchAndCacheData('playerData', 'p', { teamid: globals._teamid }, expiryTime);
         globals.PLAYER_DATA = Object.values(playerData.players);
         
+        // Fetch PlayerStatistics Data
         let playerStatisticsData = await fetchAndCacheData('playerStatisticsData', 'ps', { playerid: getPlayerIdsAsString(globals.PLAYER_DATA) }, expiryTime);
         globals.PLAYER_STATISTICS_DATA = Object.values(playerStatisticsData['player statistics']);
         
-
+        // Fetch TransferMarket Data
         let transferMarketData = await fetchAndCacheData('transferMarketData', 'tm', {}, expiryTime);
         globals.TRANSFER_DATA = Object.values(transferMarketData.auctions);
 
+        // Fetch Training Data
         let tid = globals.CLUB_DATA[0].id
         let trainingData = await fetchAndCacheData('trainingData', 'ti', {teamid: tid}, 0)
         // console.log(trainingData)
@@ -393,9 +408,11 @@ const _devKey = process.env.DEVKEY
             globals.INDIVIDUAL_DATA = Object.values(trainingData['individual training'])
         }
 
+        // Fetch Training Report Data
         let trainingReport = await fetchAndCacheData('trainingReportData', 'tr', {teamid: tid}, 0)
         globals.TRAINING_REPORT_DATA = Object.values(trainingReport.report);
 
+        //Fetch News Data
         let nationNewsKE = await fetchAndCacheData('nationNewsData', 'news', {country_iso: globals.CLUB_DATA[0].country_iso,}, expiryTime)
         // console.log(nationNewsKE);
 
@@ -403,9 +420,17 @@ const _devKey = process.env.DEVKEY
         globals.REPORT_HEADERS.sort((a, b) => Number(b.id) - Number(a.id));
         // console.log(globals.REPORT_HEADERS)
 
-        let fixture = await fetchAndCacheData ('fixtureData', 'f', {teamid:globals._teamid,last:4,})
+        let mailHeaderData = await fetchAndCacheData('mailHeaderData', 'ma', {}, 0)
+        globals.MAIL_DELETED = Object.values(mailHeaderData.deleted)
+        globals.MAIL_SAVED = Object.values(mailHeaderData.saved)
+        globals.MAIL_SENT = Object.values(mailHeaderData.sent)
+        globals.MAIL_INBOX = Object.values(mailHeaderData.inbox)
+        
+
+        // Fetch Fixture Data
+        // let fixture = await fetchAndCacheData ('fixtureData', 'f', {teamid:globals._teamid,last:4,})
         // console.log(fixture)
-        let fixtureString = Object.values(fixture.fixtures)
+        // let fixtureString = Object.values(fixture.fixtures)
         // console.log(fixtureString)
 
         // let actualstring = fixtureString.map(element => element.id);
@@ -744,7 +769,7 @@ let friendly_trophy_count = 0;
 const baseUrl = "https://www.blackoutrugby.com/game/";
 
 function cabinetBuilder() {
-    console.log(globals.CLUB_DATA[0].trophies);
+    // console.log(globals.CLUB_DATA[0].trophies);
     
     if (globals.trophies) {
         let trophies = `
@@ -787,9 +812,9 @@ function cabinetBuilder() {
         });
 
         trophies += `</div>`;
-        console.log(`League Trophies: ${league_trophy_count}`);
-        console.log(`Cup Trophies: ${cup_trophy_count}`);
-        console.log(`Friendly Trophies: ${friendly_trophy_count}`);
+        // console.log(`League Trophies: ${league_trophy_count}`);
+        // console.log(`Cup Trophies: ${cup_trophy_count}`);
+        // console.log(`Friendly Trophies: ${friendly_trophy_count}`);
         
         return trophies;
     } else {
@@ -824,7 +849,6 @@ function setTrophyCountLabel() {
         
         // Hide all non-league trophies
         leagueBtn.addEventListener('click', function () {
-            console.log('league clicked');
             document.querySelectorAll('.cup, .friendly').forEach(el => {
                 el.style.display = 'none';
             });
@@ -835,7 +859,6 @@ function setTrophyCountLabel() {
 
         // Hide all non-cup trophies
         cupBtn.addEventListener('click', function () {
-            console.log('cup clicked');
             document.querySelectorAll('.league, .friendly').forEach(el => {
                 el.style.display = 'none';
             });
@@ -846,7 +869,6 @@ function setTrophyCountLabel() {
 
         // Hide all non-friendly trophies
         friendlyBtn.addEventListener('click', function () {
-            console.log('friendly clicked');
             document.querySelectorAll('.league, .cup').forEach(el => {
                 el.style.display = 'none';
             });
@@ -857,7 +879,6 @@ function setTrophyCountLabel() {
 
         // Display All
         allBtn.addEventListener('click', function () {
-            console.log('all clicked');
             document.querySelectorAll('.friendly, .league, .cup').forEach(el => {
                 el.style.display = 'block';
             });
@@ -1250,9 +1271,10 @@ function formatBankBalance(balance) {
     Elements.settingsInfo.innerHTML = getSettingsInfo();
 
     // Manager Info
-    Elements.managerInfo.innerHTML =  
-    generateManagerInfoHTML({ username, realname, email, registerDate, lastClick, teams }) +
-    generateNewsPage(globals.REPORT_HEADERS);
+    Elements.managerInfo.innerHTML = `<div id='mail-container'>`;
+    Elements.managerInfo.innerHTML +=  `${generateMailPage()} </div>`+ 
+    generateNewsPage(globals.REPORT_HEADERS) +
+    generateManagerInfoHTML({ username, realname, email, registerDate, lastClick, teams }) ;
 
     preloadArticles(globals.REPORT_HEADERS)
     createNewsListeners();
@@ -1265,11 +1287,42 @@ function formatBankBalance(balance) {
         stadium_covered, stadium_uncovered, stadium_standing });
 
         
-    setTrophyCountLabel()
-    setRanges();
-    initColorPicker();
-    inputsForMinMaxWeightHeight()
+        setTrophyCountLabel();
+        setRanges();
+        initColorPicker();
+        inputsForMinMaxWeightHeight();
+        setupMailTabs()
+        setupMailHeadersToggle()
+
+        addListenersForTab('inbox-content', 'mail-header', 'inbox-open');
+        addListenersForTab('sent-content', 'mail-header', 'sent-open');
+        addListenersForTab('saved-content', 'mail-header', 'saved-open');
+        addListenersForTab('deleted-content', 'mail-header', 'deleted-open');
+        
 }
+
+function setupMailTabs() {
+    const tabs = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.mail-display');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            // Remove active class from all tabs and hide all content sections
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.style.display = 'none');
+
+            // Add active class to the clicked tab and show the associated content
+            tab.classList.add('active');
+            const contentId = tab.id.replace('tab-', '') + '-content';
+            document.getElementById(contentId).style.display = 'block';
+        });
+    });
+
+    // Show the first tab by default
+    document.getElementById('tab-inbox').classList.add('active');
+    document.getElementById('inbox-content').style.display = 'block';
+}
+
 
 
 
@@ -1895,6 +1948,185 @@ function checkPosition(position, weight, height, { minWeight, maxHeight, minHeig
 
 //#region DOM.js
 
+function readcount(arr){
+    let a = 0;
+    arr.forEach(el => {
+        if(el.read == 0){
+            a++
+        }
+    });
+    return a;
+}
+
+function generateMailPage() {
+    let deletedCount = readcount(globals.MAIL_DELETED[0]);
+    let inboxCount = readcount(globals.MAIL_INBOX[0]);
+    let savedCount = readcount(globals.MAIL_SAVED[0]);
+    let sentCount = readcount(globals.MAIL_SENT[0]);
+
+    console.log(globals.MAIL_INBOX[0]);
+    
+    let deletedMailHeaders = buildMailHeaderStrings(globals.MAIL_DELETED[0]);
+    let inboxMailHeaders = buildMailHeaderStrings(globals.MAIL_INBOX[0]);
+    let savedMailHeaders = buildMailHeaderStrings(globals.MAIL_SAVED[0]);
+    let sentMailHeaders = buildMailHeaderStrings(globals.MAIL_SENT[0]);
+
+    let mailPageHtml = `
+        <div class="card">
+            <h3>Mail</h3>
+            <br>
+            <div class='mail-section'>
+                <div class='mail-tab-buttons'>
+                    <span id='tab-inbox' class='tab-button'>Inbox ( <span id='inbox-open'>${inboxCount}</span> / ${globals.MAIL_INBOX[0].length} )</span> 
+                    <span id='tab-sent' class='tab-button'>Sent ( <span id='sent-open'>${sentCount}</span> / ${globals.MAIL_SENT[0].length} )</span> 
+                    <span id='tab-saved' class='tab-button'>Saved ( <span id='saved-open'>${savedCount}</span> / ${globals.MAIL_SAVED[0].length} )</span> 
+                    <span id='tab-deleted' class='tab-button'>Deleted ( <span id='deleted-open'>${deletedCount}</span> / ${globals.MAIL_DELETED[0].length} )</span>
+                </div>
+                <hr>
+                <div class="mail-content">
+                    <div id='inbox-content' class='mail-display'>
+                        ${inboxMailHeaders}
+                    </div>
+                    <div id='sent-content' class='mail-display' style='display:none;'>
+                        ${sentMailHeaders}
+                    </div>
+                    <div id='saved-content' class='mail-display' style='display:none;'>
+                        ${savedMailHeaders}
+                    </div>
+                    <div id='deleted-content' class='mail-display' style='display:none;'>
+                        ${deletedMailHeaders}
+                    </div>
+                </div>
+            </div>
+        </div>`;
+    
+   return mailPageHtml
+}
+
+
+function buildMailHeaderStrings(mailArr){
+    
+    let mailString = '';
+    
+    mailArr.forEach(element => {
+        let readMail = false;
+        if(element.read == 1){
+            readMail = true;
+        }
+        mailString += `
+            <div class="mail-item">
+                <p id='element-${element.id}' class='mail-header ${readMail ? "mail-grey" : "mail-blue"}'>
+                    <span class=''>${element.subject}</span>
+                </p>
+                <div id='message-content-${element.id}' class='message-content' style="display: none;">
+                    <p>Fetching message content...</p>
+                </div>
+            </div>`;
+        // i want to nest the message content in here and use the above ^^
+        // as a button to open/close the message
+        // when a message is clicked it should open that message
+        // and also hide ALL other opened messages, so only one is open
+        // at a time the only problem is that i cant do this in a for each
+        // loop ad the each message needs an await fetch call to get the content.. 
+        // any suggestions on how to do this?
+    });
+
+    return mailString;
+}
+
+function readMail(){
+
+}
+
+function setupMailHeadersToggle() {
+    const headers = document.querySelectorAll('.mail-header');
+    
+    headers.forEach(header => {
+        header.addEventListener('click', async function() {
+            const contentId = header.id;
+            console.log("contentID :" + contentId)
+            const bodyId = contentId.replace('element-','');
+            
+            let readElement = document.getElementById(contentId)
+            console.log(readElement);
+            
+            markRead(bodyId)
+        
+            const messageboxtodisplay = document.getElementById(`message-content-${bodyId}`)
+            // Toggle: If already displayed, hide it and return early
+            if (messageboxtodisplay.style.display === 'block') {
+                messageboxtodisplay.style.display = 'none';
+                return; // Exit early since we're closing the already open message
+            }
+            // i am trying to make a toggle with the above code ..
+            
+            const allMessages = document.querySelectorAll('.message-content');
+            allMessages.forEach(element => {
+                element.style.display = 'none'
+            });
+
+            messageboxtodisplay.style.display = 'block';
+            // Check if the content is already loaded
+            if (messageboxtodisplay.innerHTML.trim() === "<p>Fetching message content...</p>") {
+                try {
+                    const messageId = header.id.replace('element-', '');
+                    const messageContent = await fetchMessageContent(messageId);
+                    messageboxtodisplay.innerHTML = `<p class='message-body'>${messageContent}</p>`;
+                } catch (error) {
+                    console.error("Error fetching content:", error);
+                    messageboxtodisplay.innerHTML = `<p>Error fetching content.</p>`;
+                }
+            }
+            
+        });
+    });
+}
+
+async function markRead(id){
+    let response = await fetchRugbyData('ma', {read:id,}, 0)
+    console.log(response)
+}
+
+async function fetchMessageContent(messageId) {
+    // Simulate an API call to fetch the message content
+    let response = await fetchRugbyData('ma', {messageid:messageId,}, 0);
+    
+    // console.log(response)
+    let mailString = `${response.message.body}`
+    // console.log(mailString)
+    return mailString;
+}
+
+// Function to update the count
+function decrementTabCount(tabId) {
+    let countSpan = document.getElementById(tabId);
+    let count = Number(countSpan.textContent);
+
+    if (count > 0) {  // Ensure it doesn't go below 0
+        count--;
+        countSpan.textContent = count.toString();
+    }
+}
+
+// Add click event listeners to mail-header elements based on their parent tab
+function addListenersForTab(tabId, mailHeaderClass, spanId) {
+    // 1. Select mail-headers in the specified tab
+    let mailHeaders = document.querySelectorAll(`#${tabId} .${mailHeaderClass}`);
+    
+    // 2. Attach event listeners to each header
+    mailHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            if(!header.classList.contains('mail-grey')){
+                decrementTabCount(spanId);
+                header.classList.add('mail-grey')
+                header.classList.remove('mail-blue')
+            }
+            
+        });
+    });
+}
+
+//#region HEEEEEEEEEEEEEEEEEEEEERRRRR
 function generateNewsPage(headers) {
     // console.log(headers);
     let headlines = '';
@@ -1958,7 +2190,7 @@ function generateClubInfoHTML({ name, nickname_1, country_iso, formattedBalance,
         </div>
         <div class='card'>
             <div class="club-name-title">
-                <h3>Trophies</h3>
+                <h3>Trophy Cabinet</h3>
             </div>
             <hr/><br/>
             ${cabinetBuilder()}
@@ -2632,8 +2864,8 @@ function getSliderDOM(position, globals, weights) {
         </div>
         <div class='card'>
         <div>
-        <a href="https://www.patreon.com/basildoesdev" target="_blank" class="tm-button" type="button">
-            Support Dev on Patreon
+        <a href="https://www.blackoutrugby.com/game/me.account.php#page=store&memberid=153355" target="_blank" class="tm-button" type="button">
+            Support Dev
         </a> 
         </div>
         </div>
