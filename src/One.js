@@ -6,13 +6,13 @@ import './css/animations.css';
 import './css/base.css';
 import './css/components.css';
 import './css/electron-styles.css';
-import './css/responsive.css';
 import './css/sliders.css';
 import './css/stats.css';
 import './css/tab-dropdown.css';
 import './css/tm.css';
 import './css/top-button.css';
 import './css/dropdown.css';
+import './css/responsive.css';
 
 // Element references
 const Elements = {

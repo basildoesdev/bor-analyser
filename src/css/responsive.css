@@ -6,6 +6,7 @@
         margin-left: auto;
         margin-right: auto;
     }
+    
 }
 
 /* General styles for medium and large screens (576px and up) */
@@ -17,6 +18,7 @@
     .name {
         font-size: 1rem;
     }
+    
 }
 
 /* Styles for small screens (up to 768px) */
@@ -26,15 +28,14 @@
         align-items: center;
     }
 
+    .tab-dropdown {
+        display: inline-block; 
+    }
+
     .tab-btn {
         width: 100%;
         margin-bottom: 10px;
         font-size: 0.9rem;
-    }
-
-    .tab-dropdown {
-        margin-bottom: 10px;
-        display: inline-block; 
     }
 
     .tab-nav .tab-btn {
@@ -86,6 +87,7 @@
         padding: 1rem;
         margin-bottom: 1.5rem;
     }
+    
 }
 
 /* Styles for small buttons (up to 1000px) */
@@ -93,4 +95,5 @@
     .tab-btn {
         font-size: 0.7rem;
     }
+    
 }
