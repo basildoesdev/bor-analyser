@@ -90,53 +90,53 @@ const Elements = {
 
  let defaultPositionWeights = {
     'Looshead Prop': { 
-        "Weight": 1.42, "Height": 0.51, "Stamina": 1, "Attack": 0.71, "Technique": 1.34, 
-        "Jumping": 0, "Agility": 0.2, "Handling": 0.91, "Defense": 1.01, "Strength": 1.4, 
+        "Weight": 1.35, "Height": 0.4, "Stamina": 1, "Attack": 0.8, "Technique": 1.35, 
+        "Jumping": 0, "Agility": 0.2, "Handling": 0.85, "Defense": 1.15, "Strength": 1.4, 
         "Speed": 0.5, "Kicking": 0 },
     'Hooker': { 
-        "Weight": 1.13, "Height": 0.49, "Stamina": 1, "Attack": 0.69, "Technique": 1.34, 
-        "Jumping": 0, "Agility": 0.3, "Handling": 1.34, "Defense": 0.95, "Strength": 1.26, 
+        "Weight": 1.15, "Height": 0.3, "Stamina": 1, "Attack": 0.7, "Technique": 1.45, 
+        "Jumping": 0, "Agility": 0.3, "Handling": 1.45, "Defense": 0.95, "Strength": 1.25, 
         "Speed": 0.5, "Kicking": 0 },
     'Tighthead Prop': { 
-        "Weight": 1.4, "Height": 0.52, "Stamina": 1, "Attack": 0.73, "Technique": 1.35, 
-        "Jumping": 0, "Agility": 0.2, "Handling": 0.83, "Defense": 1.01, "Strength": 1.46, 
+        "Weight": 1.4, "Height": 0.45, "Stamina": 1, "Attack": 0.75, "Technique": 1.35, 
+        "Jumping": 0, "Agility": 0.2, "Handling": 0.85, "Defense": 1.05, "Strength": 1.45, 
         "Speed": 0.5, "Kicking": 0 },
     'Lock': { 
-        "Weight": 0.9, "Height": 1.03, "Stamina": 1, "Attack": 0.55, "Technique": 0.84, 
-        "Jumping": 1.26, "Agility": 0.2, "Handling": 1.05, "Defense": 0.8, "Strength": 0.94, 
-        "Speed": 0.43, "Kicking": 0 },
+        "Weight": 0.9, "Height": 1.1, "Stamina": 1, "Attack": 0.55, "Technique": 0.85, 
+        "Jumping": 1.2, "Agility": 0.2, "Handling": 1.05, "Defense": 0.8, "Strength": 0.95, 
+        "Speed": 0.4, "Kicking": 0 },
     'Blindside Flanker': { 
-        "Weight": 0.96, "Height": 0.72, "Stamina": 1, "Attack": 0.67, "Technique": 0.96, 
-        "Jumping": 0.77, "Agility": 0.53, "Handling": 0.77, "Defense": 1.09, "Strength": 0.96, 
-        "Speed": 0.57, "Kicking": 0 },
+        "Weight": 0.9, "Height": 0.75, "Stamina": 1, "Attack": 0.65, "Technique": 1.1, 
+        "Jumping": 0.7, "Agility": 0.5, "Handling": 0.8, "Defense": 1.1, "Strength": 1, 
+        "Speed": 0.5, "Kicking": 0 },
     'Openside Flanker': { 
-        "Weight": 0.96, "Height": 0.67, "Stamina": 1, "Attack": 0.67, "Technique": 1.25, 
-        "Jumping": 0.4, "Agility": 0.53, "Handling": 1.08, "Defense": 0.96, "Strength": 0.96, 
-        "Speed": 0.52, "Kicking": 0 },
+        "Weight": 0.95, "Height": 0.6, "Stamina": 1, "Attack": 0.7, "Technique": 1.3, 
+        "Jumping": 0.4, "Agility": 0.5, "Handling": 1.15, "Defense": 0.95, "Strength": 0.95, 
+        "Speed": 0.5, "Kicking": 0 },
     'No.8': { 
-        "Weight": 0.91, "Height": 0.61, "Stamina": 1, "Attack": 0.9, "Technique": 1.01, 
-        "Jumping": 0.62, "Agility": 0.62, "Handling": 0.81, "Defense": 1.01, "Strength": 1, 
-        "Speed": 0.51, "Kicking": 0 },
+        "Weight": 0.9, "Height": 0.6, "Stamina": 1, "Attack": 1, "Technique": 1.05, 
+        "Jumping": 0.6, "Agility": 0.55, "Handling": 0.8, "Defense": 1, "Strength": 1, 
+        "Speed": 0.5, "Kicking": 0 },
     'Scrum Half': { 
-        "Weight": 0, "Height": 0, "Stamina": 1, "Attack": 1.31, "Technique": 0.64, 
-        "Jumping": 0, "Agility": 1.33, "Handling": 1.34, "Defense": 1.12, "Strength": 0.56, 
-        "Speed": 1.1, "Kicking": 0.6 },
+        "Weight": 0, "Height": 0, "Stamina": 1, "Attack": 1.35, "Technique": 0.6, 
+        "Jumping": 0, "Agility": 1.35, "Handling": 1.35, "Defense": 1.1, "Strength": 0.5, 
+        "Speed": 1.15, "Kicking": 0.6 },
     'Fly Half': { 
-        "Weight": 0, "Height": 0, "Stamina": 1, "Attack": 1.19, "Technique": 0.64, 
-        "Jumping": 0, "Agility": 1.08, "Handling": 1.17, "Defense": 1.12, "Strength": 0.56, 
-        "Speed": 0.92, "Kicking": 1.32 },
+        "Weight": 0, "Height": 0, "Stamina": 1, "Attack": 1.25, "Technique": 0.6, 
+        "Jumping": 0, "Agility": 1.05, "Handling": 1.2, "Defense": 1.15, "Strength": 0.5, 
+        "Speed": 0.95, "Kicking": 1.3 },
     'Center': { 
-        "Weight": 0.35, "Height": 0, "Stamina": 1, "Attack": 1.29, "Technique": 0.6, 
-        "Jumping": 0, "Agility": 1.17, "Handling": 1.2, "Defense": 1.33, "Strength": 0.8, 
-        "Speed": 1.26, "Kicking": 0 },
+        "Weight": 0.35, "Height": 0, "Stamina": 1, "Attack": 1.3, "Technique": 0.65, 
+        "Jumping": 0, "Agility": 1.1, "Handling": 1.25, "Defense": 1.35, "Strength": 0.8, 
+        "Speed": 1.2, "Kicking": 0 },
     'Wing': { 
-        "Weight": 0, "Height": 0, "Stamina": 1, "Attack": 1.36, "Technique": 0.61, 
-        "Jumping": 0, "Agility": 1.38, "Handling": 1.27, "Defense": 1.31, "Strength": 0.7, 
-        "Speed": 1.37, "Kicking": 0 },
+        "Weight": 0, "Height": 0, "Stamina": 1, "Attack": 1.4, "Technique": 0.6, 
+        "Jumping": 0, "Agility": 1.4, "Handling": 1.25, "Defense": 1.35, "Strength": 0.6, 
+        "Speed": 1.4, "Kicking": 0 },
     'Fullback': { 
-        "Weight": 0, "Height": 0, "Stamina": 1, "Attack": 1.02, "Technique": 0.61, 
-        "Jumping": 0.26, "Agility": 1.14, "Handling": 1.18, "Defense": 1.28, "Strength": 0.43, 
-        "Speed": 1.29, "Kicking": 0.79 }
+        "Weight": 0, "Height": 0, "Stamina": 1, "Attack": 1.05, "Technique": 0.6, 
+        "Jumping": 0.25, "Agility": 1.15, "Handling": 1.2, "Defense": 1.4, "Strength": 0.5, 
+        "Speed": 1.35, "Kicking": 0.5 }
   };
 
 let heightWeightRanges = {
@@ -1192,7 +1192,7 @@ function formatBankBalance(balance) {
 
  function sortPlayers() {
     const sortBy = document.getElementById("sortOption").value;
-    const descendingFields = ['csr', 'age', 'form', 'energy', 'height', 'weight', 'stamina', 'handling', 'attack', 'defense', 'technique', 'strength', 'jumping', 'speed', 'agility', 'kicking'];
+    const descendingFields = ['csr', 'age', 'form', 'energy', 'leadership', 'height', 'weight', 'stamina', 'handling', 'attack', 'defense', 'technique', 'strength', 'jumping', 'speed', 'agility', 'kicking'];
 
     globals.PLAYER_DATA.sort((a, b) => {
         if (sortBy === 'name') return a.name.localeCompare(b.name);
@@ -2056,7 +2056,7 @@ function setupMailHeadersToggle() {
             let readElement = document.getElementById(contentId)
             // console.log(readElement);
             
-            markRead(bodyId)
+            
             updateMailCount(contentId, readElement)
         
             const messageboxtodisplay = document.getElementById(`message-content-${bodyId}`)
@@ -2079,6 +2079,7 @@ function setupMailHeadersToggle() {
                     // const messageId = header.id.replace('element-', '');
                     const messageContent = await fetchMessageContent(bodyId);
                     messageboxtodisplay.innerHTML = `<p class='message-body'>${messageContent}</p>`;
+                    markRead(bodyId)
                 } catch (error) {
                     console.error("Error fetching content:", error);
                     messageboxtodisplay.innerHTML = `<p>Error fetching content.</p>`;
@@ -2386,10 +2387,11 @@ function marketSearchBox(){
                 <select id="sortOption" class="sort-tab-dropdown" onchange="sortPlayers()">
                     <option value="name">Name</option>
                     <option value="csr" selected>CSR</option>
+                    <option value="performance">Performance</option>
                     <option value="age">Age</option>
                     <option value="form">Form</option>
                     <option value="energy">Energy</option>
-                    <option value="performance">Performance</option>
+                    <option value="leadership">Leadership</option>                    
                     <option value="height">Height</option>
                     <option value="weight">Weight</option>
                     <option value="stamina">Stamina</option>
@@ -2408,6 +2410,15 @@ function marketSearchBox(){
 // WHENEVER NEW DOM IS GENERATED MOVE IT INTO HERE!!
 
 function getPlayerHeaderSquadPage(e, tsp, pops){
+    let natOrU20 = ''
+    if (e.u20){
+        natOrU20 = `<img class='nat-img-squad' src='https://www.blackoutrugby.com/images/flagz/${e.nationality.toLowerCase()}.u20.gif'/>`
+    } else if(e.nat) {
+        natOrU20 = `<img class='nat-img-squad' src='https://www.blackoutrugby.com/images/flagz/${e.nationality.toLowerCase()}.gif'/>`
+    }else{
+        natOrU20 = ''
+    }
+    
     let diff;
     pops.forEach(element => {
         if(element?.was){
@@ -2433,19 +2444,22 @@ return `
         <div class='child'> 
         <div class="std-font">
             <span class='name'>${e.name}
-            <img class='nat-img-squad' src='https://www.blackoutrugby.com/images/flagz/${e.nationality.toLowerCase()}.gif'/> | </span>
+            ${natOrU20} | </span>
             <span class='age'> ${e.age}.yo </span> | 
             <span class='csr'> CSR: ${Number(e.csr).toLocaleString()} ${diff}</span> | 
             <span class='performance'>
-                Performance Rating: ${getPerformanceRating(e.form, e.energy, e.csr, e.isPremium)}
+                Performance: ${getPerformanceRating(e.form, e.energy, e.csr, e.isPremium)}
             </span>
-            <div>
-                <span class='physicals'>${e.weight}kg | ${e.height}cm | 
+             <div>
+                <span class='physicals'> Leadership ${e.leadership} |
                 ${getEmoji('aggression', e.aggression)} | 
                 ${getEmoji('discipline', e.discipline)}</span> | 
                 <span class='energy'>Energy: ${e.isPremium ? e.energy/10 : e.energy} </span>| 
                 <span class='form'>Form: ${e.form}</span> | 
                 <span >TSP : ${tsp} </sapn>
+            </div>
+            <div class='physicals'>
+                ${e.weight}kg | ${e.height}cm </span>
             </div>
         <div class='position'>Weight suggests: ${weightSuggestion(e.weight)}</div>
         </div>
@@ -2453,6 +2467,15 @@ return `
 }
 
 function getPlayerHeaderAuctionPage(playerTeamName, bidTeamName, e, tsp){
+
+let natOrU20 = ''
+    if (e.u20){
+        natOrU20 = `<img class='nat-img-squad' src='https://www.blackoutrugby.com/images/flagz/${e.nationality.toLowerCase()}.u20.gif'/>`
+    } else if(e.capped_for) {
+        natOrU20 = `<img class='nat-img-squad' src='https://www.blackoutrugby.com/images/flagz/${e.capped_for.toLowerCase()}.gif'/>`
+    }else{
+        natOrU20 = ''
+    }
 
 return `
 <div class='red injury'>${isDateInPast(e.injured) ? " ❗ Injured until: " + formatDateString(e.injured) + " ❗": " "} </div>
@@ -2471,20 +2494,23 @@ return `
         <div class='title-section'>
         <div class="std-font">
             <span class='name'>${e.name}
-            </span><img class='nat-img-squad' src='https://www.blackoutrugby.com/images/flagz/${e.nationality.toLowerCase()}.gif'/></span> | 
+            ${natOrU20}</span> | 
             <span class='age'> ${e.age}.yo </span> | 
             <span class='csr'> CSR: ${Number(e.csr).toLocaleString()}</span> | 
             <span class='performance'>
-                Performance Rating: ${getPerformanceRating(e.form, e.energy, e.csr, e.isPremium)}
+                Performance: ${getPerformanceRating(e.form, e.energy, e.csr, e.isPremium)}
             </span><br>
             Current Team : ${playerTeamName}
             <div>
-                <span class='physicals'>${e.weight}kg | ${e.height}cm | 
+                <span class='physicals'> Leadership ${e.leadership} |
                 ${getEmoji('aggression', e.aggression)} | 
                 ${getEmoji('discipline', e.discipline)}</span> | 
+                <span class='energy'>Energy: ${e.isPremium ? e.energy/10 : e.energy} </span>| 
                 <span class='form'>Form: ${e.form}</span> | 
-                <span class='energy'>Energy: ${e.isPremium ? e.energy/10 : e.energy} </span> | 
-                TSP : ${tsp}
+                <span >TSP : ${tsp} </sapn>
+            </div>
+            <div class='physicals'>
+                ${e.weight}kg | ${e.height}cm </span>
             </div>
             <div class='position'>Weight suggests: ${weightSuggestion(e.weight)}</div>
         </div>
@@ -2647,6 +2673,7 @@ function checkPops(popsAndDrops, argSkill) {
 };
 
 function squadMatchStatsDisplay(element){
+    console.log(element)
     return `<h4>Statistics for ${element.name}</h4>
     
         <div class="stats-container">
@@ -2681,7 +2708,7 @@ function squadMatchStatsDisplay(element){
                     <span>Penalties:</span> <span class="stat-value">${element.penalties}</span>
                 </div>
                 <div class='stats-spacer'>
-                    <span>Dropgoals:</span> <span class="stat-value">${element.dropgoals}</span>
+                    <span>Drop Goals:</span> <span class="stat-value">${element.dropgoals}</span>
                 </div>
                 <div class='stats-spacer'>
                     <span>Total Points:</span> <span class="stat-value">${element.totalpoints}</span>
@@ -2722,10 +2749,51 @@ function squadMatchStatsDisplay(element){
                     <span>Avg Meters Kicked: </span> <span class="stat-value">${element.avkickingmetres}</span>
                 </div>
                 <div class='stats-spacer'>
+                    <span>Good U&U:</span> <span class="stat-value">${element.goodupandunders}</span>
+                </div>
+            </div>
+
+            <div class="stats-category">
+                <h5>Kicking Bad</h5>
+                <div class='stats-spacer'>
+                    <span>Bad Kicks:</span> <span class="stat-value">${element.badkicks}</span>
+                </div>
+                <div class='stats-spacer'>
+                    <span>Missed Conversions: </span> <span class="stat-value">${element.missedconversions}</span>
+                </div>
+                <div class='stats-spacer'>
+                    <span>Missed Penalties: </span> <span class="stat-value">${element.missedpenalties}</span>
+                </div>
+                <div class='stats-spacer'>
+                    <span>Missed Drop Goals </span> <span class="stat-value">${element.misseddropgoals}</span>
+                </div>
+                <div class='stats-spacer'>
                     <span>Kickes out on full:</span> <span class="stat-value">${element.kicksoutonthefull}</span>
                 </div>
                 <div class='stats-spacer'>
-                    <span>Good U&U:</span> <span class="stat-value">${element.goodupandunders}</span>
+                    <span>Bad U&U:</span> <span class="stat-value">${element.badupandunders}</span>
+                </div>
+            </div>
+
+            <div class="stats-category">
+                <h5>Handling</h5>
+                <div class='stats-spacer'>
+                    <span>Handling Errors </span> <span class="stat-value">${element.handlingerrors}</span>
+                </div>
+                <div class='stats-spacer'>
+                    <span>Forward Passes: </span> <span class="stat-value">${element.forwardpasses}</span>
+                </div>
+                <div class='stats-spacer'>
+                    <span>Turnovers Won: </span> <span class="stat-value">${element.turnoverswon}</span>
+                </div>
+                <div class='stats-spacer'>
+                    <span>Lineouts Stolen: </span> <span class="stat-value">${element.lineoutsstolen}</span>
+                </div>
+                <div class='stats-spacer'>
+                    <span>Lineouts Secured:</span> <span class="stat-value">${element.lineoutssecured}</span>
+                </div>
+                <div class='stats-spacer'>
+                    <span>Lineouts Conceded: </span> <span class="stat-value">${element.lineoutsconceded}</span>
                 </div>
             </div>
 

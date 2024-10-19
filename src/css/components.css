@@ -94,7 +94,7 @@ input[type="text"]:-webkit-autofill {
     
 }
 
-#access-key{
+#access-key, #settings-api-key{
     font-size: 1rem;
     color: rgb(1, 122, 17);
     border: 1px solid #ccc;
