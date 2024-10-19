@@ -1,63 +1,119 @@
-
+/* General Mail Display Styles */
 .mail-display {
   display: none;
   margin: 10px 0;
   border-radius: 2px;
 }
 
-.mail-content{
+/* Mail content with rounded corners */
+.mail-content {
   border-radius: 2px;
 }
 
-.message-body{
-  padding:20px;
+/* Message Body Styling */
+.message-body {
+  padding: 20px;
 }
 
-.mail-blue{
-  color:#0d54ee;
+/* Colors for the mail headers */
+.mail-blue {
+  color: #0d54ee;
 }
 
-.mail-grey{
+.mail-grey {
   color: rgb(104, 99, 99);
 }
 
-.mail-item{
-  padding: 3px;
+/* Padding for individual mail items */
+.mail-item {
+  padding: 3px; /* Increased for better touch interaction */
+  border-bottom: 1px solid #7a7a7a;
+  margin-bottom: 1px;
+  border-radius: 2px;
 }
 
+.mail-item:hover{
+  cursor: pointer;
+  /* color:#818181; */
+}
+
+/* Styling alternate mail items for better readability */
 .mail-display .mail-item:nth-child(odd) {
   background-color: #cccccc1e;
-  margin-bottom: 1px;
 }
 
 .mail-display .mail-item:nth-child(even) {
   background-color: #4b4b4ba2;
-  margin-bottom: 1px;
 }
 
+/* Tab Button Styling */
 .tab-button {
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 5px 10px; /* Larger padding for better touch interaction */
   border: 1px solid #ccc;
   background-color: #1d1c1c;
-  border-radius: 2px;
+  border-radius: 5px;
   margin-right: 5px;
+  color: #fff;
+  transition: background-color 0.3s ease;
 }
 
+/* Hover state for buttons */
 .tab-button:hover {
   background-color: #696868;
 }
 
+/* Active tab button */
 .tab-button.active {
   background-color: #0425df;
   font-weight: bold;
 }
 
-.mail-content{
+/* Mail Content Margin */
+.mail-content {
   margin-top: 15px;
-
 }
 
-.mail-tab-buttons{
+/* Tab Button Container */
+.mail-tab-buttons {
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Mobile Styles for Responsiveness */
+@media (max-width: 768px) {
+  .tab-button {
+    padding: 5px 15px; /* Adjust button size for smaller screens */
+    margin-bottom: 10px;
+    flex: 1; /* Ensure buttons fill the available space */
+  }
+  
+  /* Stack buttons vertically on small screens */
+  .mail-tab-buttons {
+    flex-direction: column;
+  }
+
+  .mail-item {
+    padding: 8px; /* Smaller padding for mobile */
+  }
+
+  .message-body {
+    padding: 15px; /* Reduced padding for better fit */
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-button {
+    padding: 6px 8px; /* Adjust button size for very small screens */
+    font-size: 14px; /* Slightly smaller font for buttons */
+  }
+
+  .mail-item {
+    font-size: 14px; /* Adjust text size for better readability */
+  }
+
+  .message-body {
+    font-size: 14px; /* Adjust text size for message body on small screens */
+  }
 }

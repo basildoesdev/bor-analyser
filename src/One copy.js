@@ -1972,10 +1972,10 @@ function generateMailPage() {
 
     console.log(globals.MAIL_INBOX[0]);
     
-    let deletedMailHeaders = buildMailHeaderStrings(globals.MAIL_DELETED[0], 'deleted');
-    let inboxMailHeaders = buildMailHeaderStrings(globals.MAIL_INBOX[0], 'inbox');
-    let savedMailHeaders = buildMailHeaderStrings(globals.MAIL_SAVED[0], 'saved');
-    let sentMailHeaders = buildMailHeaderStrings(globals.MAIL_SENT[0], 'sent');
+    let deletedMailHeaders = buildMailHeaderStrings(globals.MAIL_DELETED[0]);
+    let inboxMailHeaders = buildMailHeaderStrings(globals.MAIL_INBOX[0]);
+    let savedMailHeaders = buildMailHeaderStrings(globals.MAIL_SAVED[0]);
+    let sentMailHeaders = buildMailHeaderStrings(globals.MAIL_SENT[0]);
 
     let mailPageHtml = `
         <div class="card">
@@ -2010,7 +2010,7 @@ function generateMailPage() {
 }
 
 
-function buildMailHeaderStrings(mailArr, _type){
+function buildMailHeaderStrings(mailArr){
     
     let mailString = '';
     
@@ -2021,7 +2021,7 @@ function buildMailHeaderStrings(mailArr, _type){
         }
         mailString += `
             <div class="mail-item">
-                <p id='${_type}-element-${element.id}' class='mail-header ${readMail ? "mail-grey" : "mail-blue"}'>
+                <p id='element-${element.id}' class='mail-header ${readMail ? "mail-grey" : "mail-blue"}'>
                     <span class=''>${element.subject}</span>
                 </p>
                 <div id='message-content-${element.id}' class='message-content' style="display: none;">
@@ -2046,18 +2046,13 @@ function setupMailHeadersToggle() {
     headers.forEach(header => {
         header.addEventListener('click', async function() {
             const contentId = header.id;
+            console.log("contentID :" + contentId)
+            const bodyId = contentId.replace('element-','');
             
-            // console.log("contentID :" + contentId)
-            
-            const bodyId = contentId.replace(/.*element-/, '');
-            
-            // console.log(bodyId)
-
             let readElement = document.getElementById(contentId)
-            // console.log(readElement);
+            console.log(readElement);
             
             markRead(bodyId)
-            updateMailCount(contentId, readElement)
         
             const messageboxtodisplay = document.getElementById(`message-content-${bodyId}`)
             // Toggle: If already displayed, hide it and return early
@@ -2076,8 +2071,8 @@ function setupMailHeadersToggle() {
             // Check if the content is already loaded
             if (messageboxtodisplay.innerHTML.trim() === "<p>Fetching message content...</p>") {
                 try {
-                    // const messageId = header.id.replace('element-', '');
-                    const messageContent = await fetchMessageContent(bodyId);
+                    const messageId = header.id.replace('element-', '');
+                    const messageContent = await fetchMessageContent(messageId);
                     messageboxtodisplay.innerHTML = `<p class='message-body'>${messageContent}</p>`;
                 } catch (error) {
                     console.error("Error fetching content:", error);
@@ -2088,47 +2083,6 @@ function setupMailHeadersToggle() {
         });
     });
 }
-
-
-function updateMailCount(headerId, elementObject) {
-    // Determine which tab is clicked and decrement the appropriate count
-    console.log(headerId)
-    console.log(elementObject)
-    let flag = false
-    if(elementObject.classList.contains('mail-grey')){
-        flag = true
-    }
-
-    if (headerId.includes('inbox') && !flag) {
-        inboxCount--;
-        document.getElementById('inbox-open').textContent = inboxCount;
-        if (inboxCount <= 0) {
-            document.getElementById('tab-inbox').innerHTML = `📭 Inbox ( ${inboxCount} / ${globals.MAIL_INBOX[0].length} )`;
-        }
-    } else if (headerId.includes('sent') && !flag) {
-        sentCount--;
-        document.getElementById('sent-open').textContent = sentCount;
-        if (sentCount <= 0) {
-            document.getElementById('tab-sent').innerHTML = `📭 Sent ( ${sentCount} / ${globals.MAIL_SENT[0].length} )`;
-        }
-    } else if (headerId.includes('saved') && !flag) {
-        savedCount--;
-        document.getElementById('saved-open').textContent = savedCount;
-        if (savedCount <= 0) {
-            document.getElementById('tab-saved').innerHTML = `📭 Saved ( ${savedCount} / ${globals.MAIL_SAVED[0].length} )`;
-        }
-    } else if (headerId.includes('deleted') && !flag) {
-        deletedCount--;
-        document.getElementById('deleted-open').textContent = deletedCount;
-        if (deletedCount <= 0) {
-            document.getElementById('tab-deleted').innerHTML = `📭 Deleted ( ${deletedCount} / ${globals.MAIL_DELETED[0].length} )`;
-        }
-    }
-
-    flag = false
-}
-
-
 
 async function markRead(id){
     let response = await fetchRugbyData('ma', {read:id,}, 0)
@@ -2145,7 +2099,16 @@ async function fetchMessageContent(messageId) {
     return mailString;
 }
 
+// Function to update the count
+function decrementTabCount(tabId) {
+    let countSpan = document.getElementById(tabId);
+    let count = Number(countSpan.textContent);
 
+    if (count > 0) {  // Ensure it doesn't go below 0
+        count--;
+        countSpan.textContent = count.toString();
+    }
+}
 
 // Add click event listeners to mail-header elements based on their parent tab
 function addListenersForTab(tabId, mailHeaderClass, spanId) {
@@ -2156,6 +2119,7 @@ function addListenersForTab(tabId, mailHeaderClass, spanId) {
     mailHeaders.forEach(header => {
         header.addEventListener('click', () => {
             if(!header.classList.contains('mail-grey')){
+                decrementTabCount(spanId);
                 header.classList.add('mail-grey')
                 header.classList.remove('mail-blue')
             }
