@@ -428,7 +428,7 @@ const _devKey = process.env.DEVKEY
         
 
         // Fetch Fixture Data
-        // let fixture = await fetchAndCacheData ('fixtureData', 'f', {teamid:globals._teamid,last:4,})
+        // let fixture = await fetchAndCacheData ('fixtureData', 'rs', {fixtureid:23250,nat:1,},0)
         // console.log(fixture)
         // let fixtureString = Object.values(fixture.fixtures)
         // console.log(fixtureString)
@@ -1970,7 +1970,7 @@ function generateMailPage() {
     savedCount = readcount(globals.MAIL_SAVED[0]);
     sentCount = readcount(globals.MAIL_SENT[0]);
 
-    console.log(globals.MAIL_INBOX[0]);
+    // console.log(globals.MAIL_INBOX[0]);
     
     let deletedMailHeaders = buildMailHeaderStrings(globals.MAIL_DELETED[0], 'deleted');
     let inboxMailHeaders = buildMailHeaderStrings(globals.MAIL_INBOX[0], 'inbox');
@@ -2022,7 +2022,7 @@ function buildMailHeaderStrings(mailArr, _type){
         mailString += `
             <div class="mail-item">
                 <p id='${_type}-element-${element.id}' class='mail-header ${readMail ? "mail-grey" : "mail-blue"}'>
-                    <span class=''>${element.subject}</span>
+                    <span class=''>${element.subject}</span> <span><span>[Save]</span> <span>[Delete]</span></span>
                 </p>
                 <div id='message-content-${element.id}' class='message-content' style="display: none;">
                     <p>Fetching message content...</p>
@@ -2093,8 +2093,8 @@ function setupMailHeadersToggle() {
 
 function updateMailCount(headerId, elementObject) {
     // Determine which tab is clicked and decrement the appropriate count
-    console.log(headerId)
-    console.log(elementObject)
+    // console.log(headerId)
+    // console.log(elementObject)
     let flag = false
     if(elementObject.classList.contains('mail-grey')){
         flag = true
@@ -2133,7 +2133,7 @@ function updateMailCount(headerId, elementObject) {
 
 async function markRead(id){
     let response = await fetchRugbyData('ma', {read:id,}, 0)
-    console.log(response)
+    // console.log(response)
 }
 
 async function fetchMessageContent(messageId) {
@@ -2673,7 +2673,7 @@ function checkPops(popsAndDrops, argSkill) {
 };
 
 function squadMatchStatsDisplay(element){
-    console.log(element)
+    // console.log(element)
     return `<h4>Statistics for ${element.name}</h4>
     
         <div class="stats-container">

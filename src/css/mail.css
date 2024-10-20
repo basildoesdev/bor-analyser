@@ -81,6 +81,13 @@
   flex-wrap: wrap;
 }
 
+
+.mail-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
 /* Mobile Styles for Responsiveness */
 @media (max-width: 768px) {
   .tab-button {
