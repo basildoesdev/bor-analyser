@@ -1,0 +1,7 @@
+[build]
+  publish = "dist" 
+  functions = "netlify/functions" 
+  environment = { NODE_VERSION = "v20.18.0" }
+
+[functions]
+  node_bundler = "webpack"

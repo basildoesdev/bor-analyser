@@ -284,54 +284,7 @@ function isElectron() {
 
 //#region Fetch.js //////////////////////
 
-const corsProxy = 'https://corsproxy.io/?';
-const targetUrl = 'https://classic-api.blackoutrugby.com/';
 
-// Generate a timestamp
-const timestamp = new Date().getTime();
-
-// Append timestamp to the target URL
-const API_URL = `${corsProxy}${targetUrl}?t=${timestamp}`;
-
-// API URL
-// const API_URL = 'https://corsproxy.io/?https://classic-api.blackoutrugby.com/';
-
-const _devId = process.env.DEVID
-const _devKey = process.env.DEVKEY
-
-// Fetch Rugby Data
- async function fetchRugbyData(requestType, additionalParams = {}, ignore) {
-    const mailParams = {
-        d: _devId, 
-        dk: _devKey, 
-        r: requestType,
-        m: globals._memberid,
-        mk: globals._mainKey,
-        json: 1,
-        ...additionalParams
-    };  
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json',
-            },
-            body: new URLSearchParams(mailParams)
-        });
-
-        const data = await response.json();
-        
-        if (data?.status?.trim?.() === 'Ok') {
-            return data;
-        } else {}
-    } catch (error) {
-        if (ignore != 0){
-            throw error;  
-        }
-       
-    }
-}
 
  async function fetchAndCacheData(key, requestType, params = {}, expiryTime = 60 * 60 * 1000) {
     let cachedData = getCachedData(key, expiryTime);
@@ -340,7 +293,13 @@ const _devKey = process.env.DEVKEY
         // console.log(`Loading ${key} from API...`);
         Elements.loaderInfoDisplay.innerHTML = `Loading ${key} from API...`;
         let dataStart = performance.now();
-        cachedData = await fetchRugbyData(requestType, params);
+        cachedData = await fetch('/.netlify/functions/fetchRugbyData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ requestType, additionalParams: params }),
+        });
         let dataFinish = performance.now();
         // console.log(`Loaded ${key} data (${dataStart + dataFinish}ms)`);
         Elements.loaderInfoDisplay.innerHTML = `Loaded ${key} data (${dataStart + dataFinish}ms)`;

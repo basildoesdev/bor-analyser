@@ -52,11 +52,9 @@
         <div style="display: inline;">
             <span id="title">BoR Team Analyzer</span>
             <div class="dropdown">
-                <span class="dropdown-btn">
-                  &#9662; 
-                </span>
+                <span class="dropdown-btn" aria-label="Open dropdown menu">&#9662;</span>
                 <div class="dropdown-menu">
-                  <a href="#" id="clear-storage">Reload</a>
+                  <a href="#" id="clear-storage" aria-label="Reload the page and clear storage">Reload</a>
                   <!-- <a href="#" id="clear-storage" class="hide">Manager</a>
                   <a href="#" id="clear-storage" class="hide">Squad</a>
                   <a href="#" id="clear-storage">Market</a>
@@ -65,21 +63,21 @@
               </div>
         </div>
         
-        <div id="game-date" class="hide game-date"></div>
+        <div id="game-date" class="hide game-date" aria-label="Game date"></div>
         
         <div id="title-bar-contols" class="title-bar-controls">
-            <button id="minimize" aria-label="Minimize"></button>
-            <button id="maximize" aria-label="Maximize"></button>
-            <button id="close" aria-label="Close"></button>
+            <button id="minimize" aria-label="Minimize the window"></button>
+            <button id="maximize" aria-label="Maximize the window"></button>
+            <button id="close" aria-label="Close the window"></button>
         </div>
     </div>
 
     <div id="team-analyzer-form">
-        <h2 class="app-title"><a class="team-analyszer-form-links" href="https://www.blackoutrugby.com/" target="_blank" rel="noopener noreferrer">BoR</a> Team Analyzer</h2>
+        <h2 class="app-title" aria-label="Team Analyzer title"><a class="team-analyszer-form-links" href="https://www.blackoutrugby.com/" target="_blank" rel="noopener noreferrer">BoR</a> Team Analyzer</h2>
         
         <div class="input-container">
             <label id="key-valid-display" for="access-key"></label>
-            <input type="text" id="access-key" name="access-key" placeholder="🗝️ Access Key" oninput="checkKeyInput()" required>
+            <input type="text" id="access-key" name="access-key" placeholder="🗝️ Access Key" oninput="checkKeyInput()" aria-label="Enter your Access Key here" required>
         </div>
         
         <div class="input-container">
@@ -87,24 +85,24 @@
         </div>
 
         <div class="input-container">
-            <label><input type="checkbox" id="save-key" name="save-key"> Save key to local storage</label>
+            <label aria-label="Save Access Key"><input type="checkbox" id="save-key" name="save-key"> Save key to local storage</label>
         </div>
-        <button id="submit" onclick="retrieveData()" disabled="true">Submit</button>
+        <button id="submit" aria-label="Submit access key" onclick="retrieveData()" disabled="true">Submit</button>
     </div>
 
-    <div id="information" class="loader hide"></div>
+    <div id="information" class="loader hide" aria-label="Loading information"></div>
     <div id="loader-information" class="nonce hide"></div>
     
     <div id="info-container" class="container hide">
         <nav class="tab-nav">
-            <div id="tab-1-btn" class="tab-btn active" onclick="showTab(1)">Manager Info</div>
-            <div id="tab-2-btn" class="tab-btn" onclick="showTab(2)">Club Info</div>
-            <div id="tab-3-btn" class="tab-btn" onclick="showTab(3)">Team Averages</div>
-            <div id="tab-4-btn" class="tab-btn" onclick="showTab(4)">Team Averages</div>
-            <div id="tab-5-btn" class="tab-btn" onclick="showTab(5)">Settings</div>
+            <div id="tab-1-btn" class="tab-btn active" onclick="showTab(1)" aria-label="Manager Info tab">Manager Info</div>
+            <div id="tab-2-btn" class="tab-btn" onclick="showTab(2)" aria-label="Club Info tab">Club Info</div>
+            <div id="tab-3-btn" class="tab-btn" onclick="showTab(3)" aria-label="Team Averages tab">Team Averages</div>
+            <div id="tab-4-btn" class="tab-btn" onclick="showTab(4)" aria-label="Market Info tab">Team Averages</div>
+            <div id="tab-5-btn" class="tab-btn" onclick="showTab(5)" aria-label="Settings tab">Settings</div>
         </nav>
 
-        <select id="tab-dropdown" class="tab-dropdown" onchange="showTabDropdown(this.value)">
+        <select id="tab-dropdown" class="tab-dropdown" onchange="showTabDropdown(this.value)" aria-label="Select tab from dropdown">
             <option id="option1" value="1">Manager Info</option>
             <option id="option2" value="2">Club Info</option>
             <option id="option3" value="3">Team Averages</option>
@@ -112,28 +110,28 @@
             <option id="option5" value="5">Settings</option>
         </select>
 
-        <div id="tab1" class="tab-content">
+        <div id="tab1" class="tab-content" aria-labelledby="tab-1-btn">
             <p id="manager-infos">Details about the manager will be displayed here.</p>
         </div>
 
-        <div id="tab2" class="tab-content active">
+        <div id="tab2" class="tab-content active" aria-labelledby="tab-2-btn">
             <p id="club-infos">Details about the club will be displayed here.</p>
         </div>
 
-        <div id="tab3" class="tab-content">
+        <div id="tab3" class="tab-content" aria-labelledby="tab-3-btn">
             <p id="averages">Team averages and stats will be displayed here.</p>
             <nav id="sort-list-display"></nav>
             <p id="player-card-container">Player card information will be displayed here.</p>
         </div>
-        <div id="tab4" class="tab-content">
-            <p id="market-infos">market-infos will be displated here</p>
+        <div id="tab4" class="tab-content" aria-labelledby="tab-4-btn">
+            <p id="market-infos">Market information will be displayed here.</p>
         </div>
-        <div id="tab5" class="tab-content">
+        <div id="tab5" class="tab-content" aria-labelledby="tab-5-btn">
             <p id="settings-infos">Settings and options for the tool will be displayed here.</p>
         </div>
     </div>
     
-    <button id="backToTop" title="Go to top">Top</button>
+    <button id="backToTop" title="Go to top" aria-label="Back to top button">Top</button>
 
     <!-- Scripts -->
     <script type="module" src="bundle.js"></script>
